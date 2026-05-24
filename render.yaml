@@ -1,0 +1,17 @@
+# Render Blueprint - one-click deploy configuration
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: sukoon-agent
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: GEMINI_API_KEY
+        sync: false  # set manually in Render dashboard
+      - key: FIREBASE_SERVICE_ACCOUNT
+        sync: false  # set manually in Render dashboard
